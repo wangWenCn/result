@@ -45,6 +45,7 @@ func HTTPResult(r *http.Request, w http.ResponseWriter, resp any, err error) {
 				httpx.WriteJson(w, http.StatusOK, Error(errCode, errMsg))
 			}
 		}
+		httpx.WriteJson(w, http.StatusOK, Error(errCode, errMsg))
 	}
 }
 
