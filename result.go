@@ -27,6 +27,8 @@ func HTTPResult(r *http.Request, w http.ResponseWriter, resp any, err error) {
 			//自定义CodeError
 			errCode = e.Code
 			errMsg = e.Message
+			httpx.WriteJson(w, http.StatusOK, Error(errCode, errMsg))
+			return
 		} else {
 			//rpc 错误
 			s, ok := status.FromError(err)
@@ -45,7 +47,6 @@ func HTTPResult(r *http.Request, w http.ResponseWriter, resp any, err error) {
 				httpx.WriteJson(w, http.StatusOK, Error(errCode, errMsg))
 			}
 		}
-		httpx.WriteJson(w, http.StatusOK, Error(errCode, errMsg))
 	}
 }
 
