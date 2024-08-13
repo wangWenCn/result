@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-
+	
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
-
+	
 	"github.com/wangWenCn/xerr"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -37,7 +37,7 @@ func HTTPResult(r *http.Request, w http.ResponseWriter, resp any, err error) {
 				if s.Code() == codes.Unknown {
 					errCode = xerr.MapErrCode(errMsg)
 				} else {
-					errCode = uint32(s.Code())
+					errCode = int64(s.Code())
 					errMsg = s.Message()
 				}
 				logx.WithContext(r.Context()).Errorf("【RPC-ERR】 : %+v ", err)

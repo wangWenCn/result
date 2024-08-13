@@ -4,7 +4,6 @@ go 1.22.4
 
 require (
 	github.com/pkg/errors v0.9.1
-	github.com/wangWenCn/xerr v1.0.0
 	github.com/zeromicro/go-zero v1.6.5
 	google.golang.org/grpc v1.64.0
 )
@@ -16,6 +15,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
+	github.com/wangWenCn/xerr v1.0.1 // indirect
 	go.opentelemetry.io/otel v1.19.0 // indirect
 	go.opentelemetry.io/otel/trace v1.19.0 // indirect
 	go.uber.org/automaxprocs v1.5.3 // indirect
