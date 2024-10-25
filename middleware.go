@@ -54,7 +54,7 @@ func LogTraceMiddleware(next http.HandlerFunc) http.HandlerFunc {
 		} else {
 			fields = append(fields, logx.Field("body", string(body)))
 		}
-
+		
 		var buffer bytes.Buffer
 		rw := &responseWriter{
 			ResponseWriter: w,

@@ -43,8 +43,15 @@ func LogTraceInterceptor(ctx context.Context, req any, info *grpc.UnaryServerInf
 }
 
 func pb2map(pb interface{}) map[string]any {
+	if pb == nil {
+		return nil
+	}
 	m := make(map[string]any)
-	val := reflect.ValueOf(pb).Elem()
+	val := reflect.ValueOf(pb)
+	if val.IsNil() {
+		return nil
+	}
+	val = val.Elem()
 	for i := 0; i < val.NumField(); i++ {
 		valueField := val.Field(i)
 		typeField := val.Type().Field(i)
