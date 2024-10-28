@@ -44,6 +44,7 @@ func LogTraceMiddleware(next http.HandlerFunc) http.HandlerFunc {
 		if err != nil {
 			logx.WithContext(r.Context()).Errorw("读取请求参数失败", logx.Field("err", err))
 		}
+		r.Body = io.NopCloser(bytes.NewBuffer(body))
 		if strings.Contains(r.Header.Get("Content-Type"), "json") && len(body) > 0 {
 			var reqBody map[string]any
 			err := json.Unmarshal(body, &reqBody)
