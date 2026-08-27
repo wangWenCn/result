@@ -25,7 +25,7 @@ func HTTPResult(r *http.Request, w http.ResponseWriter, resp any, err error) {
 		return
 	}
 	errCode := xerr.ServerCommonError
-	errMsg := "网络波动，请稍后再试"
+	errMsg := "当前访问人数过多，请稍后再试"
 	causeErr := errors.Cause(err)
 	if e, ok := causeErr.(*xerr.CodeError); ok { //自定义错误类型
 		//自定义CodeError
@@ -46,7 +46,7 @@ func HTTPResult(r *http.Request, w http.ResponseWriter, resp any, err error) {
 	}
 	if errCode == xerr.SystemError || errCode == xerr.ServerCommonError {
 		errCode = xerr.SystemError
-		errMsg = "网络波动，稍后再试"
+		errMsg = "当前访问人数过多，稍后再试"
 	}
 	httpx.WriteJson(w, http.StatusOK, Error(errCode, errMsg))
 }
